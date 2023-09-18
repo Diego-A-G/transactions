@@ -55,7 +55,7 @@ class AuthTransactionFragment : Fragment() {
     }
 
     private fun checkIsView() {
-        TODO("Not yet implemented")
+
     }
 
     private fun initViewModel() {

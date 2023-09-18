@@ -19,6 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp" />
 
-    <!-- Puedes agregar más elementos de diseño según tus necesidades -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volver"
+        android:layout_marginTop="16dp"
+        android:id="@+id/btnBack" />
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.transactions
 import AuthTransactionFragment
 import DetailTransactionFragment
 import SearchTransactionFragment
+import TransactionsFragment
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity(), IStepListener {
                     AuthTransactionFragment.newInstance(this)
                 }
 
+                LaunchViewModel.ELaunchStatus.HISTORY -> {
+                    TransactionsFragment.newInstance(this)
+                }
+
                 LaunchViewModel.ELaunchStatus.SEARCH -> {
                     SearchTransactionFragment.newInstance(this)
                 }
@@ -95,7 +100,7 @@ class MainActivity : AppCompatActivity(), IStepListener {
     }
 
     override fun toAuthCancelled() {
-        viewModel.confirmStep(LaunchViewModel.ELaunchStatus.MENU)
+        viewModel.confirmStep(LaunchViewModel.ELaunchStatus.LOGIN)
     }
 
     override fun toSearchTransactions() {
@@ -103,7 +108,7 @@ class MainActivity : AppCompatActivity(), IStepListener {
     }
 
     override fun toSearchCanceled() {
-        viewModel.confirmStep(LaunchViewModel.ELaunchStatus.VIEW)
+        viewModel.confirmStep(LaunchViewModel.ELaunchStatus.LOGIN)
     }
 
     override fun toViewTransaction() {

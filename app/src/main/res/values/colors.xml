@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00000000</color>
     <color name="blue">#162B75</color>
+    <color name="approved">#4CAF50</color>
+    <color name="denied">#F44336</color>
 </resources>

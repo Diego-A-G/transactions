@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.transactions.Constants
 import com.example.transactions.Session
 import com.example.transactions.databinding.FragmentListTransactionsBinding
+import com.example.transactions.ui.IStepListener
 import com.example.transactions.ui.managers.TransactionViewModel
 import com.example.transactions.ui.managers.TransactionViewModelFactory
 import com.example.transactions.ui.vos.TransactionListAdapter
@@ -18,6 +19,7 @@ class TransactionsFragment : Fragment() {
     private var _binding: FragmentListTransactionsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: TransactionViewModel
+    private lateinit var authStepListener: IStepListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +46,10 @@ class TransactionsFragment : Fragment() {
         binding.recyclerViewTransactions.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = TransactionListAdapter(transactionList)
+        }
+
+        binding.btnBack.setOnClickListener {
+            authStepListener.toAuthCancelled()
         }
     }
 
@@ -72,4 +78,19 @@ class TransactionsFragment : Fragment() {
 
         return transactionList
     }
+
+
+    private fun setAuthListener(authStepListener: IStepListener) {
+        this.authStepListener = authStepListener
+    }
+
+    companion object {
+
+        fun newInstance(authStepListener: IStepListener): TransactionsFragment {
+            return TransactionsFragment().apply {
+                setAuthListener(authStepListener)
+            }
+        }
+    }
+
 }

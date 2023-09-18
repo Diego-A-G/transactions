@@ -19,6 +19,8 @@ class LaunchViewModel : ViewModel() {
             ELaunchStatus.MENU -> launchStatus.postValue(ELaunchStatus.AUTH)
             ELaunchStatus.AUTH -> launchStatus.postValue(ELaunchStatus.VIEW)
             ELaunchStatus.VIEW -> launchStatus.postValue(ELaunchStatus.SEARCH)
+            ELaunchStatus.SEARCH -> launchStatus.postValue(ELaunchStatus.HISTORY)
+
             else -> {}
         }
     }
@@ -29,6 +31,7 @@ class LaunchViewModel : ViewModel() {
         LOGIN,
         MENU,
         AUTH,
+        HISTORY,
         SEARCH,
         VIEW
     }
