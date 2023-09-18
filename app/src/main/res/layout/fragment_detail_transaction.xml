@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalles de la Transacción"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- TextViews para mostrar los detalles de la transacción -->
+    <TextView
+        android:id="@+id/textViewReceiptId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de Recibo: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/textViewRRN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Número de RRN: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/textViewStatusCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Código de Estado: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/textViewStatusDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción de Estado: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
+
+    <!-- Puedes agregar más elementos de diseño según tus necesidades -->
+
+</LinearLayout>
