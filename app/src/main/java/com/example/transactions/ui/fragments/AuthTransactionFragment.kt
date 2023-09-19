@@ -79,8 +79,8 @@ class AuthTransactionFragment : Fragment() {
 
                 is ProcessStatus.Error -> {
                     showButton(true)
-                    showMessage(it.message, true)
-                    binding.btnSend.isEnabled = true
+                    showMessage(it.message, it.message.isNotBlank())
+                    binding.btnSend.isEnabled = it.message.isNotBlank()
                 }
 
                 is ProcessStatus.Success -> {

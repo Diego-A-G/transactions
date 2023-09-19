@@ -12,6 +12,7 @@ import com.example.transactions.repository.mappers.AuthorizationEntityMapper
 import com.example.transactions.services.ITransactionsServices
 import com.example.transactions.services.ServiceRest
 import com.example.transactions.ui.vos.TransactionVO
+import java.util.UUID
 
 class AuthorizationRepository(
     private val serviceRest: ServiceRest,
@@ -24,24 +25,38 @@ class AuthorizationRepository(
 
     private suspend fun sendTransaction(transactionVO: TransactionVO) {
         val dto = AuthorizationDTOMapper().VOToBussiness(transactionVO)
-        val retrofit = serviceRest.getClientWithAuthHeader(
-            Constants.URL,
-            transactionVO.commerceCode,
-            transactionVO.terminalCode
-        )
-        val apiClient = retrofit?.create(ITransactionsServices::class.java)
-        val response = apiClient?.sendAuthorization(dto)
-        if (response !is AuthResponseDTO) throw Exception()
-        transactionVO.receiptId = response.receiptId
-        transactionVO.rrn = response.rrn
-        transactionVO.statusCode = response.statusCode
-        transactionVO.statusDescription = response.statusDescription
-        saveTransaction(transactionVO)
+        val transaction = createAuthConfirmedInfo(transactionVO)
+        try {
+            val retrofit = serviceRest.getClientWithAuthHeader(
+                Constants.URL,
+                transaction.commerceCode,
+                transaction.terminalCode
+            )
+            val apiClient = retrofit?.create(ITransactionsServices::class.java)
+            val response = apiClient?.sendAuthorization(dto)
+            if (response !is AuthResponseDTO) throw Exception()
+            transaction.receiptId = response.receiptId
+            transaction.rrn = response.rrn
+            transaction.statusCode = response.statusCode
+            transaction.statusDescription = response.statusDescription
+        } catch (ex: Exception) {
+            throw Exception(ex)
+        } finally {
+            saveTransaction(transaction)
+        }
     }
 
     override suspend fun saveTransaction(transactionVO: TransactionVO) {
         val entity = AuthorizationEntityMapper().VOToBussiness(transactionVO)
         database.getAuthorizationDao().insertAuthorization(entity)
+    }
+
+    private fun createAuthConfirmedInfo(transactionVO: TransactionVO): TransactionVO {
+        transactionVO.receiptId = UUID.randomUUID().toString()
+        transactionVO.rrn = UUID.randomUUID().toString()
+        transactionVO.statusCode = "00"
+        transactionVO.statusDescription = "Aprobada"
+        return transactionVO
     }
 
     override suspend fun getTransactions(): List<TransactionVO> {
@@ -70,6 +85,12 @@ class AuthorizationRepository(
         terminalCode: String
     ) {
         val annulment = AnnulRequestDTO(receiptId, rrn)
+        val annulmentEntity = AnnulmentEntity(
+            receiptId = receiptId,
+            rrn = rrn,
+            statusCode = "00",
+            statusDescription = "Aprovada"
+        )
         try {
             val retrofit = serviceRest.getClientWithAuthHeader(
                 Constants.URL,
@@ -79,20 +100,15 @@ class AuthorizationRepository(
             val response =
                 retrofit!!.create(ITransactionsServices::class.java).sendAnnulation(annulment)
             if (response !is AnnulResponseDTO) throw Exception()
-            val annulmentEntity = AnnulmentEntity(
-                receiptId = receiptId,
-                rrn = rrn,
-                statusCode = response.statusCode,
-                statusDescription = response.statusDescription
-            )
-
+            annulmentEntity.statusCode = response.statusCode
+            annulmentEntity.statusDescription = response.statusDescription
+        } catch (ex: Exception) {
+            throw ex
+        } finally {
             database.getAnnulmentDao().insertAnnulment(annulmentEntity)
             database.getAuthorizationDao().updateAuthorizationStatus(
                 receiptId, "99", "Denegada"
             )
-            //TODO eliminar annulment dao por redundancia
-        } catch (ex: Exception) {
-            throw ex
         }
     }
 }

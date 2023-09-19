@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class AnnulmentEntity(
     @PrimaryKey val receiptId: String,
     val rrn: String,
-    val statusCode: String,
-    val statusDescription: String
+    var statusCode: String,
+    var statusDescription: String
 )
 
