@@ -5,7 +5,6 @@ import com.example.transactions.persistence.database.CrediBankDatabase
 import com.example.transactions.persistence.entities.AnnulmentEntity
 import com.example.transactions.repository.declaration.IAuthorizationRepository
 import com.example.transactions.repository.dto.AnnulRequestDTO
-import com.example.transactions.repository.dto.AnnulResponseDTO
 import com.example.transactions.repository.dto.AuthResponseDTO
 import com.example.transactions.repository.mappers.AuthorizationDTOMapper
 import com.example.transactions.repository.mappers.AuthorizationEntityMapper
@@ -75,19 +74,19 @@ class AuthorizationRepository(
             commerceCode,
             terminalCode
         )
-        val apiClient = retrofit?.create(ITransactionsServices::class.java)
-        val response = apiClient?.sendAnnulation(annulment)
-        if (response !is AnnulResponseDTO) throw Exception()
+//        val apiClient = retrofit?.create(ITransactionsServices::class.java)
+//        val response = apiClient?.sendAnnulation(annulment)
+//        if (response !is AnnulResponseDTO) throw Exception()
         val annulmentEntity = AnnulmentEntity(
             receiptId = receiptId,
             rrn = rrn,
-            statusCode = response.statusCode,
-            statusDescription = response.statusDescription
+            statusCode = "99",
+            statusDescription = "Denegada"
         )
 
         database.getAnnulmentDao().insertAnnulment(annulmentEntity)
         database.getAuthorizationDao().updateAuthorizationStatus(
-            receiptId, response.statusCode, response.statusDescription
+            receiptId, "99", "Denegada"
         )
         //TODO eliminar annulment dao por redundancia
     }

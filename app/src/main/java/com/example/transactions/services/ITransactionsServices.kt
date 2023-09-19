@@ -16,7 +16,7 @@ interface ITransactionsServices {
     ): AuthResponseDTO
 
 
-    @GET("annulation")
+    @GET("annulment")
     suspend fun sendAnnulation(
         @Body request: AnnulRequestDTO
     ): AnnulResponseDTO
