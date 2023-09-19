@@ -5,6 +5,7 @@ import com.example.transactions.persistence.database.CrediBankDatabase
 import com.example.transactions.persistence.entities.AnnulmentEntity
 import com.example.transactions.repository.declaration.IAuthorizationRepository
 import com.example.transactions.repository.dto.AnnulRequestDTO
+import com.example.transactions.repository.dto.AnnulResponseDTO
 import com.example.transactions.repository.dto.AuthResponseDTO
 import com.example.transactions.repository.mappers.AuthorizationDTOMapper
 import com.example.transactions.repository.mappers.AuthorizationEntityMapper
@@ -69,25 +70,29 @@ class AuthorizationRepository(
         terminalCode: String
     ) {
         val annulment = AnnulRequestDTO(receiptId, rrn)
-        val retrofit = serviceRest.getClientWithAuthHeader(
-            Constants.URL,
-            commerceCode,
-            terminalCode
-        )
-//        val apiClient = retrofit?.create(ITransactionsServices::class.java)
-//        val response = apiClient?.sendAnnulation(annulment)
-//        if (response !is AnnulResponseDTO) throw Exception()
-        val annulmentEntity = AnnulmentEntity(
-            receiptId = receiptId,
-            rrn = rrn,
-            statusCode = "99",
-            statusDescription = "Denegada"
-        )
+        try {
+            val retrofit = serviceRest.getClientWithAuthHeader(
+                Constants.URL,
+                commerceCode,
+                terminalCode
+            )
+            val response =
+                retrofit!!.create(ITransactionsServices::class.java).sendAnnulation(annulment)
+            if (response !is AnnulResponseDTO) throw Exception()
+            val annulmentEntity = AnnulmentEntity(
+                receiptId = receiptId,
+                rrn = rrn,
+                statusCode = response.statusCode,
+                statusDescription = response.statusDescription
+            )
 
-        database.getAnnulmentDao().insertAnnulment(annulmentEntity)
-        database.getAuthorizationDao().updateAuthorizationStatus(
-            receiptId, "99", "Denegada"
-        )
-        //TODO eliminar annulment dao por redundancia
+            database.getAnnulmentDao().insertAnnulment(annulmentEntity)
+            database.getAuthorizationDao().updateAuthorizationStatus(
+                receiptId, "99", "Denegada"
+            )
+            //TODO eliminar annulment dao por redundancia
+        } catch (ex: Exception) {
+            throw ex
+        }
     }
 }

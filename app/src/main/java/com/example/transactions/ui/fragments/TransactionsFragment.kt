@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +13,7 @@ import com.example.transactions.repository.declaration.IAnnulmentDialog
 import com.example.transactions.repository.declaration.ISearchDialog
 import com.example.transactions.ui.IStepListener
 import com.example.transactions.ui.dialog.SearchTransactionDialog
+import com.example.transactions.ui.managers.ProcessStatus
 import com.example.transactions.ui.managers.TransactionViewModel
 import com.example.transactions.ui.managers.TransactionViewModelFactory
 import com.example.transactions.ui.vos.TransactionListAdapter
@@ -52,6 +54,13 @@ class TransactionsFragment : Fragment(), IAnnulmentDialog, ISearchDialog {
             }
         }
         viewModel.fetchTransactions()
+        viewModel.getProcessStatus().observe(viewLifecycleOwner) {
+            if (it is ProcessStatus.Success) Toast.makeText(
+                requireContext(),
+                "Anulado correctament",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 
     private fun setListeners() {
