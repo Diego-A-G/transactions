@@ -6,6 +6,7 @@
 
     <string name="error_empty_fields">¡FALTA DIGITAR CAMPO(S)!</string>
     <string name="load_info">CARGANDO INFORMACION</string>
+    <string name="no_transaction">NO HAY TRANSACCIONES HECHAS</string>
     <string name="log_in">INGRESAR</string>
     <string name="annul_transaction">ANULACION DE TRANSACCION</string>
     <string name="detail_transaction">DETALLES DE TRANSACCION</string>

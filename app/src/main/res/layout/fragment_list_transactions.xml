@@ -13,6 +13,18 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/emptyTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:text="@string/no_transaction"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+
     <!-- RecyclerView para mostrar la lista de transacciones -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTransactions"
