@@ -8,6 +8,8 @@ Para ejecutar esta aplicación, debes tener en cuenta los siguientes requisitos:
 
 - [Android Studio](https://developer.android.com/studio) instalado en tu computadora.
 - El servidor de la API de servicios HTTP debe estar en ejecución en [http://localhost:8080/api/payments](http://localhost:8080/api/payments).
+- se debe actulizar la url del proyecto con la ip del servidor
+- se deben conectar a la misma red wi-fi el dispositvo y el servidor
 
 ## Funcionalidades
 
@@ -21,7 +23,7 @@ Para ejecutar esta aplicación, debes tener en cuenta los siguientes requisitos:
 
 - Ingresa el número de recibo de una transacción en el formulario de búsqueda.
 - Si se encuentra la transacción, se muestra su detalle y se proporciona la opción de anularla.
-- Si no se encuentra la transacción, se muestra un mensaje de error.
+- Si no se encuentra la transacción, se muestra un mensaje de no exitente.
 
 ### Listado de Todas las Transacciones Aprobadas
 
@@ -40,8 +42,8 @@ Para ejecutar esta aplicación, debes tener en cuenta los siguientes requisitos:
 ```shell
 git clone https://github.com/TuUsuario/nombre-de-repo.git
 
-Abre el proyecto en Android Studio.
+2.Abre el proyecto en Android Studio.
 
-Asegúrate de tener el servidor de la API en ejecución en http://localhost:8080/api/payments.
+3.Asegúrate de tener el servidor de la API en ejecución en http://localhost:8080/api/payments.
 
-Ejecuta la aplicación en un emulador de Android o dispositivo físico.
+4.Ejecuta la aplicación en un emulador de Android o dispositivo físico.
