@@ -20,7 +20,7 @@ class AuthorizationRepository(
 ) : IAuthorizationRepository {
 
     override suspend fun authTransaction(transactionVO: TransactionVO) {
-        //sendTransaction(transactionVO)
+        sendTransaction(transactionVO)
         saveTransaction(createAuthConfirmedInfo(transactionVO))
     }
 
@@ -74,7 +74,7 @@ class AuthorizationRepository(
         commerceCode: String,
         terminalCode: String
     ) {
-        //cancelService(receiptId,rrn,commerceCode,terminalCode)
+        cancelService(receiptId, rrn, commerceCode, terminalCode)
         val annulmentEntity = AnnulmentEntity(
             receiptId = receiptId,
             rrn = rrn,

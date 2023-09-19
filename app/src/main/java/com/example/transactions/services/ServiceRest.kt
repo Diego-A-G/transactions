@@ -1,5 +1,6 @@
 package com.example.transactions.services
 
+import com.example.transactions.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -50,7 +51,7 @@ class ServiceRest {
             .build()
 
         return Retrofit.Builder()
-            .baseUrl("https://localhost:8080/api/payments/")
+            .baseUrl(Constants.URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient)
             .build()
