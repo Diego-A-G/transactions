@@ -1,9 +1,7 @@
 package com.example.transactions
 
 import AuthTransactionFragment
-import DetailTransactionFragment
 import SearchTransactionFragment
-import TransactionsFragment
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +10,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.transactions.databinding.ActivityMainBinding
 import com.example.transactions.ui.IStepListener
 import com.example.transactions.ui.fragments.ConfigurationFragment
+import com.example.transactions.ui.fragments.DetailTransactionFragment
 import com.example.transactions.ui.fragments.LoginFragment
 import com.example.transactions.ui.fragments.MenuFragment
+import com.example.transactions.ui.fragments.TransactionsFragment
 import com.example.transactions.ui.managers.LaunchViewModel
 import com.example.transactions.ui.managers.LaunchViewModelFactory
 

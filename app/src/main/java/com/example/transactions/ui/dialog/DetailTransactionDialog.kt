@@ -61,7 +61,7 @@ class DetailTransactionDialog : DialogFragment() {
             binding.okButton.setOnClickListener {
                 dismiss()
             }
-
+            if (transaction.statusCode != "00") binding.annulButton.visibility = View.GONE
             binding.annulButton.setOnClickListener {
                 // Lógica para el botón Anular
                 with(transaction) {

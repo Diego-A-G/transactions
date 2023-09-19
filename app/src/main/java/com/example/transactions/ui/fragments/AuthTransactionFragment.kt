@@ -22,6 +22,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.UUID
 
 class AuthTransactionFragment : Fragment() {
 
@@ -51,9 +52,9 @@ class AuthTransactionFragment : Fragment() {
     }
 
     private fun fillDefaultInfo() {
+        binding.editTextId.setText(UUID.randomUUID().toString())
         binding.editTextCommerceCode.setText("000123")
         binding.editTextTerminalCode.setText("000ABC")
-        binding.editTextAmount.setText("0")
         binding.editTextCard.setText("1234567890123456")
     }
 
@@ -190,12 +191,22 @@ class AuthTransactionFragment : Fragment() {
     private fun getTransactionInfo(): TransactionVO {
         return TransactionVO(
             id = binding.editTextId.text.toString(),
-            amount = binding.editTextAmount.text.toString(),
+            amount = convertAmountToInteger(binding.editTextAmount.text.toString()),
             card = binding.editTextCard.text.toString(),
             commerceCode = binding.editTextCommerceCode.text.toString(),
             terminalCode = binding.editTextTerminalCode.text.toString()
         )
     }
+
+    private fun convertAmountToInteger(text: String): String {
+        val sanitizedText = text.replace("[^\\d.]".toRegex(), "") // Elimina caracteres no numéricos
+        val decimalIndex =
+            sanitizedText.indexOf('.') // Encuentra el índice del punto decimal
+        // Si hay un punto decimal, elimina los dígitos después del punto
+        return if (decimalIndex != -1) sanitizedText.substring(0, decimalIndex)
+        else sanitizedText
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

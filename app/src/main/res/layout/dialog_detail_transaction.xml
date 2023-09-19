@@ -29,21 +29,21 @@
             android:layout_marginLeft="10dp"
             android:src="@drawable/ic_alert"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/titleTextView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/titleTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
             android:textColor="@color/white"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/iconAlertImageView"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="DETALLE DE TRANSACCION" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="@string/detail_transaction" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -76,8 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/transaction_id"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/textTransactionId"

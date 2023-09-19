@@ -1,0 +1,14 @@
+<!-- ic_search.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+
+    <path
+        android:fillColor="#000000"
+        android:pathData="M9.5,0C4.263,0,0,4.263,0,9.5S4.263,19,9.5,19S19,14.737,19,9.5S14.737,0,9.5,0z M9.5,17C5.364,17,2,13.636,2,9.5S5.364,2,9.5,2S17,5.364,17,9.5S13.636,17,9.5,17z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M16.293,15.293L12,11.586V5h-1v6.586l-4.293,4.293l1.414,1.414L12,13.414l2.879,2.879l1.414,-1.414z" />
+</vector>

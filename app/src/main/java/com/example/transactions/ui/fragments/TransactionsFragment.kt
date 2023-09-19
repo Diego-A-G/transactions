@@ -1,3 +1,5 @@
+package com.example.transactions.ui.fragments
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +9,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.transactions.databinding.FragmentListTransactionsBinding
 import com.example.transactions.repository.declaration.IAnnulmentDialog
+import com.example.transactions.repository.declaration.ISearchDialog
 import com.example.transactions.ui.IStepListener
+import com.example.transactions.ui.dialog.SearchTransactionDialog
 import com.example.transactions.ui.managers.TransactionViewModel
 import com.example.transactions.ui.managers.TransactionViewModelFactory
 import com.example.transactions.ui.vos.TransactionListAdapter
+import com.example.transactions.ui.vos.TransactionVO
 
-class TransactionsFragment : Fragment(), IAnnulmentDialog {
+class TransactionsFragment : Fragment(), IAnnulmentDialog, ISearchDialog {
 
     private var _binding: FragmentListTransactionsBinding? = null
     private val binding get() = _binding!!
@@ -53,6 +58,13 @@ class TransactionsFragment : Fragment(), IAnnulmentDialog {
         binding.btnBack.setOnClickListener {
             authStepListener.toAuthCancelled()
         }
+        binding.searchButton.setOnClickListener {
+            val detailDialog = SearchTransactionDialog.newInstance(this, this)
+            detailDialog.show(parentFragmentManager, "DetailTransactionDialog")
+        }
+        binding.reloadButton.setOnClickListener {
+            viewModel.fetchTransactions()
+        }
     }
 
     private fun initViewModel() {
@@ -80,6 +92,10 @@ class TransactionsFragment : Fragment(), IAnnulmentDialog {
         terminalCode: String
     ) {
         viewModel.annulTransaction(receiptId, rrn, commerceCode, terminalCode)
+    }
+
+    override fun searchTransaction(id: String): TransactionVO? {
+        return viewModel.getTransactions().value?.find { it.id == id }
     }
 
 }
