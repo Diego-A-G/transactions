@@ -36,9 +36,14 @@ class TransactionsFragment : Fragment(), IAnnulmentDialog {
 
     private fun setObservers() {
         viewModel.getTransactions().observe(viewLifecycleOwner) {
-            binding.recyclerViewTransactions.apply {
-                layoutManager = LinearLayoutManager(context)
-                adapter = TransactionListAdapter(it, this@TransactionsFragment)
+            if (it.isEmpty()) {
+                binding.recyclerViewTransactions.visibility = View.GONE
+                binding.emptyTextView.visibility = View.VISIBLE
+            } else {
+                binding.recyclerViewTransactions.apply {
+                    layoutManager = LinearLayoutManager(context)
+                    adapter = TransactionListAdapter(it, this@TransactionsFragment)
+                }
             }
         }
         viewModel.fetchTransactions()
