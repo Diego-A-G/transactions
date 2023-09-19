@@ -41,6 +41,7 @@ class SearchTransactionDialog : DialogFragment() {
                     annulmentDialog
                 ) // Pasa los datos del elemento al fragmento
                 detailDialog.show(parentFragmentManager, "DetailTransactionDialog")
+                dismiss()
             }
         }
     }

@@ -88,7 +88,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center">
 
         <ProgressBar
@@ -110,6 +110,13 @@
             android:text="@string/app_name"
             android:textAlignment="center"
             android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
 
         <Button
             android:layout_width="wrap_content"
