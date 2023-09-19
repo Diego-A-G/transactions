@@ -5,4 +5,35 @@
     <string name="title_notifications">Notifications</string>
 
     <string name="error_empty_fields">¡FALTA DIGITAR CAMPO(S)!</string>
+    <string name="load_info">CARGANDO INFORMACION</string>
+    <string name="log_in">INGRESAR</string>
+    <string name="annul_transaction">ANULACION DE TRANSACCION</string>
+    <string name="detail_transaction">DETALLES DE TRANSACCION</string>
+    <string name="view_history_transaction">VER HISTORIAL DE TRANSACCIONES</string>
+    <string name="history_transaction">HISTORIAL DE TRANSACCIONES</string>
+    <string name="user">USUARIO</string>
+    <string name="password">CLAVE</string>
+    <string name="number_receipt">NUMERO DE RECIBO</string>
+    <string name="transaction_id">ID DE TRANSACCION</string>
+    <string name="commerce_code">CODIGO DE COMERCIO</string>
+    <string name="terminal_code">CODIGO DE TERMINAL</string>
+    <string name="hint_id_transaction">ingrese el codigo de transaccion</string>
+    <string name="hint_amount">ingrese el monto</string>
+    <string name="hint_number_card">ingrese el numero de tarjeta</string>
+    <string name="hint_number_receipt">ingrese el numero de recibo</string>
+    <string name="hint_terminal_code">ingrese el codigo de terminal</string>
+    <string name="hint_commerce_code">ingrese el codigo de comercio</string>
+    <string name="amount">MONTO</string>
+    <string name="card">TARJETA</string>
+    <string name="status_code">CODIGO DE ESTADO</string>
+    <string name="status_description">DESCRIPCION ESTADO</string>
+    <string name="rrn">RRN</string>
+    <string name="back_button">VOLVER</string>
+    <string name="close_button">CERRAR SESION</string>
+    <string name="accept_button">ACEPTAR</string>
+    <string name="cancel_button">CANCELAR</string>
+    <string name="send_button">ENVIAR</string>
+    <string name="annul_button">ANULAR</string>
+    <string name="search_button">BUSCAR</string>
+    <string name="sending_auth">ENVIANDO TRANSACCION</string>
 </resources>

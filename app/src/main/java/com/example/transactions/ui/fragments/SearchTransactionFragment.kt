@@ -4,8 +4,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.transactions.Constants
-import com.example.transactions.Session
 import com.example.transactions.databinding.FragmentTransactionsByReceiptBinding
 import com.example.transactions.ui.IStepListener
 import com.example.transactions.ui.managers.ProcessStatus
@@ -64,7 +62,7 @@ class SearchTransactionFragment : Fragment() {
     }
 
     private fun initViewModel() {
-        val factory = TransactionViewModelFactory(Session.header, Constants.URL, requireContext())
+        val factory = TransactionViewModelFactory(requireContext())
         this.viewModel = ViewModelProvider(this, factory)[TransactionViewModel::class.java]
     }
 

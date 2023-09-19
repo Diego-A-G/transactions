@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Número de Recibo:"
+        android:text="@string/number_receipt"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -16,14 +16,14 @@
         android:id="@+id/editTextReceiptNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el número de recibo"
+        android:hint="@string/hint_number_receipt"
         android:inputType="text" />
 
     <Button
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Buscar" />
+        android:text="@string/search_button" />
 
     <!-- Aquí puedes agregar más elementos de diseño según tus necesidades -->
 

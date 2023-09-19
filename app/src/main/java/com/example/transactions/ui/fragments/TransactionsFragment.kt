@@ -5,16 +5,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.transactions.Constants
-import com.example.transactions.Session
 import com.example.transactions.databinding.FragmentListTransactionsBinding
+import com.example.transactions.repository.declaration.IAnnulmentDialog
 import com.example.transactions.ui.IStepListener
 import com.example.transactions.ui.managers.TransactionViewModel
 import com.example.transactions.ui.managers.TransactionViewModelFactory
 import com.example.transactions.ui.vos.TransactionListAdapter
-import com.example.transactions.ui.vos.TransactionVO
 
-class TransactionsFragment : Fragment() {
+class TransactionsFragment : Fragment(), IAnnulmentDialog {
 
     private var _binding: FragmentListTransactionsBinding? = null
     private val binding get() = _binding!!
@@ -37,48 +35,25 @@ class TransactionsFragment : Fragment() {
     }
 
     private fun setObservers() {
-
+        viewModel.getTransactions().observe(viewLifecycleOwner) {
+            binding.recyclerViewTransactions.apply {
+                layoutManager = LinearLayoutManager(context)
+                adapter = TransactionListAdapter(it, this@TransactionsFragment)
+            }
+        }
+        viewModel.fetchTransactions()
     }
 
     private fun setListeners() {
-        val transactionList = getTransactionList()
-        // Configurar el RecyclerView
-        binding.recyclerViewTransactions.apply {
-            layoutManager = LinearLayoutManager(context)
-            adapter = TransactionListAdapter(transactionList)
-        }
-
         binding.btnBack.setOnClickListener {
             authStepListener.toAuthCancelled()
         }
     }
 
     private fun initViewModel() {
-        val factory = TransactionViewModelFactory(Session.header, Constants.URL, requireContext())
+        val factory = TransactionViewModelFactory(requireContext())
         this.viewModel = ViewModelProvider(this, factory)[TransactionViewModel::class.java]
     }
-
-    // Esta función es solo un ejemplo, debes reemplazarla con la lógica real para obtener la lista de transacciones.
-    private fun getTransactionList(): List<TransactionVO> {
-        val transactionList = mutableListOf<TransactionVO>()
-        val transactionVO = TransactionVO(
-            "12345",
-            "67890",
-            "00",
-            "Aprobada",
-            "1234567890123456",
-            "",
-            "",
-            "",
-            ""
-        )
-        // Agregar transacciones a la lista (simuladas en este ejemplo)
-        transactionList.add(transactionVO)
-        transactionList.add(transactionVO)
-
-        return transactionList
-    }
-
 
     private fun setAuthListener(authStepListener: IStepListener) {
         this.authStepListener = authStepListener
@@ -91,6 +66,15 @@ class TransactionsFragment : Fragment() {
                 setAuthListener(authStepListener)
             }
         }
+    }
+
+    override fun onAnnulmentTransaction(
+        receiptId: String,
+        rrn: String,
+        commerceCode: String,
+        terminalCode: String
+    ) {
+        viewModel.annulTransaction(receiptId, rrn, commerceCode, terminalCode)
     }
 
 }

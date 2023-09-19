@@ -83,8 +83,8 @@ class MainActivity : AppCompatActivity(), IStepListener {
     }
 
     private fun setVideo() {
-        val path = Uri.parse("android.resource://" + this.packageName + "/" + R.raw.blue_dust)
-        binding.videoBackground.setVideoURI(path)
+        val videoUri = Uri.parse("android.resource://${packageName}/${R.raw.blue_dust}")
+        binding.videoBackground.setVideoURI(videoUri)
     }
 
     override fun onConfigurationCompleted() {

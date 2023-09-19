@@ -8,7 +8,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ID:"
+        android:text="@string/transaction_id"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -16,14 +17,15 @@
         android:id="@+id/editTextId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el ID"
+        android:hint="@string/hint_id_transaction"
         android:inputType="text"
         android:importantForAccessibility="yes" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Commerce Code: 000123"
+        android:text="@string/commerce_code"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -31,14 +33,15 @@
         android:id="@+id/editTextCommerceCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el Codigo de comercio"
+        android:hint="@string/hint_commerce_code"
         android:inputType="text"
         android:importantForAccessibility="yes" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Terminal Code: 000ABC"
+        android:text="@string/terminal_code"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -46,14 +49,15 @@
         android:id="@+id/editTextTerminalCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el codigo de terminal"
+        android:hint="@string/hint_terminal_code"
         android:inputType="text"
         android:importantForAccessibility="yes" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount:"
+        android:text="@string/amount"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -61,14 +65,15 @@
         android:id="@+id/editTextAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el monto (ejemplo: 12345.67)"
+        android:hint="@string/hint_amount"
         android:inputType="numberDecimal"
         android:importantForAccessibility="yes" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Card: 1234567890123456"
+        android:text="@string/card"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -76,20 +81,51 @@
         android:id="@+id/editTextCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el número de tarjeta"
+        android:hint="@string/hint_number_card"
         android:inputType="number"
         android:importantForAccessibility="yes" />
 
-    <Button
+    <TextView
+        android:id="@+id/authErrorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enviar"
-        android:id="@+id/btnSend" />
+        android:layout_marginStart="5dp"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_alert"
+        android:gravity="center_vertical"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:visibility="gone" />
 
-    <Button
+    <ProgressBar
+        android:id="@+id/authProgress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Volver"
-        android:id="@+id/btnBack" />
+        android:layout_margin="10dp"
+        android:indeterminateDrawable="@drawable/progress"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/send_button"
+            android:id="@+id/btnSend" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/back_button"
+            android:id="@+id/btnBack" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

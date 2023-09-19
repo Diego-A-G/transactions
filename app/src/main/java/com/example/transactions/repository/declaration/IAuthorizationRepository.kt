@@ -9,5 +9,10 @@ interface IAuthorizationRepository {
     suspend fun getTransactions(): List<TransactionVO>
     suspend fun getTransactionByReceipt(receipt: String): TransactionVO
     suspend fun getAuthTransactions(): List<TransactionVO>
-    suspend fun cancelTransaction(receiptId: String, rrn: String)
+    suspend fun cancelTransaction(
+        receiptId: String,
+        rrn: String,
+        commerceCode: String,
+        terminalCode: String
+    )
 }

@@ -12,17 +12,31 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
+        android:drawableStart="@drawable/ic_send"
         android:scaleType="fitCenter"
-        android:text="Enviar Transacción"
+        android:text="@string/send_button"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/btnViewTransactions"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnSendTransaction"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:text="Ver Transacciones Realizadas"
+        android:drawableStart="@drawable/ic_history"
+        android:text="@string/view_history_transaction"
         android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnViewTransactions"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@drawable/ic_back"
+        android:text="@string/close_button"
+        android:textSize="18sp" />
+
 </RelativeLayout>

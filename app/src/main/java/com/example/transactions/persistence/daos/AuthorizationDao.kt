@@ -16,4 +16,11 @@ interface AuthorizationDao {
     @Query("SELECT * FROM authorization")
     suspend fun getAllAuthorizations(): List<AuthorizationEntity>
 
+    @Query("UPDATE authorization SET statusCode = :newStatusCode, statusDescription = :newStatusDescription WHERE receiptId = :receiptId")
+    suspend fun updateAuthorizationStatus(
+        receiptId: String,
+        newStatusCode: String,
+        newStatusDescription: String
+    )
+
 }

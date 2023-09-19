@@ -6,16 +6,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.transactions.persistence.database.DatabaseBuilder
 import com.example.transactions.repository.declaration.IAuthorizationRepository
 import com.example.transactions.repository.implementation.AuthorizationRepository
-import com.example.transactions.services.ITransactionsServices
 import com.example.transactions.services.ServiceRest
 
 class TransactionViewModelFactory(
     private val transactionRepo: IAuthorizationRepository
 ) : ViewModelProvider.Factory {
 
-    constructor(header: String, url: String, context: Context) : this(
+    constructor(context: Context) : this(
         AuthorizationRepository(
-            ServiceRest(header).getClient(url)!!.create(ITransactionsServices::class.java),
+            ServiceRest(),
             DatabaseBuilder.getInstance(context)
         )
     )

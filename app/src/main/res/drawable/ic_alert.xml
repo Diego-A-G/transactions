@@ -1,0 +1,18 @@
+<!-- res/drawable/ic_alert.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Círculo amarillo -->
+    <path
+        android:fillColor="#FFFF00"
+        android:pathData="M12,2.5c-5.514,0-10,4.486-10,10s4.486,10,10,10s10-4.486,10-10S17.514,2.5,12,2.5z" />
+
+    <!-- Signo de exclamación negro -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M12,5.2c-0.276,0-0.5,0.224-0.5,0.5v6c0,0.276,0.224,0.5,0.5,0.5s0.5-0.224,0.5-0.5v-6C12.5,5.424,12.276,5.2,12,5.2z M12,16.5c-0.276,0-0.5-0.224-0.5-0.5s0.224-0.5,0.5-0.5s0.5,0.224,0.5,0.5S12.276,16.5,12,16.5z" />
+
+</vector>

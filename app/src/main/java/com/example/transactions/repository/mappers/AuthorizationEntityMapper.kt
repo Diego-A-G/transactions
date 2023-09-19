@@ -12,10 +12,10 @@ class AuthorizationEntityMapper : GenericVOMapper<AuthorizationEntity, Transacti
             terminalCode = business.terminalCode,
             amount = business.amount,
             card = business.card,
-            receiptId = "",
-            rrn = "",
-            statusCode = "",
-            statusDescription = ""
+            receiptId = business.receiptId ?: "",
+            rrn = business.rrn ?: "",
+            statusCode = business.statusCode ?: "",
+            statusDescription = business.statusDescription ?: ""
         )
     }
 
@@ -25,7 +25,11 @@ class AuthorizationEntityMapper : GenericVOMapper<AuthorizationEntity, Transacti
             commerceCode = vo.commerceCode,
             terminalCode = vo.terminalCode,
             amount = vo.amount,
-            card = vo.card
+            card = vo.card,
+            receiptId = vo.receiptId,
+            rrn = vo.rrn,
+            statusCode = vo.statusCode,
+            statusDescription = vo.statusDescription
         )
     }
 

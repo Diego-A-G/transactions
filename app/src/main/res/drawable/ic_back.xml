@@ -1,0 +1,13 @@
+<!-- res/drawable/ic_back_to_menu.xml -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Icono de flecha hacia atrás (negro) -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M20,11H7.41l4.29-4.29c0.39-0.39,0.39-1.02,0-1.41s-1.02-0.39-1.41,0L4.7,11.3 c-0.39,0.39-0.39,1.02,0,1.41l5.18,5.18c0.39,0.39,1.02,0.39,1.41,0s0.39-1.02,0-1.41L7.41,13H20c0.55,0,1-0.45,1-1S20.55,11,20,11z" />
+
+</vector>

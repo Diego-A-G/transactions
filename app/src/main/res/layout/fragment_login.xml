@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="usuario" />
+            android:textColor="@color/white"
+            android:text="@string/user" />
 
         <EditText
             android:id="@+id/userLoginEditText"
@@ -51,7 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="contrasena" />
+            android:textColor="@color/white"
+            android:text="@string/password" />
 
         <EditText
             android:id="@+id/passwordLoginEditText"
@@ -77,6 +79,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:text="@string/app_name"
+        android:textColor="@color/white"
         android:textAlignment="center"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@+id/inputPassword"
@@ -99,7 +102,7 @@
         android:id="@+id/loginButton"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:text="INGRESAR"
+        android:text="@string/log_in"
         android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

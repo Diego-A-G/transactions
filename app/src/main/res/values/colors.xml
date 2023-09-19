@@ -11,4 +11,6 @@
     <color name="blue">#162B75</color>
     <color name="approved">#4CAF50</color>
     <color name="denied">#F44336</color>
+    <color name="soft_blue">#6A85B6</color>
+
 </resources>
